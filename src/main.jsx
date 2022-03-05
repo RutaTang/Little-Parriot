@@ -18,9 +18,9 @@ ReactDOM.render(
 		<BrowserRouter>
 			<Routes>
 				<Route path="/" element={<AuthProtector><Home/></AuthProtector>} />
-				<Route path="/signup/" element={<SignUp />} />
-				<Route path="/login/" element={<LogIn />} />
-				<Route path="/logout/" element={<LogOut />} />
+				<Route path="/signup" element={<SignUp />} />
+				<Route path="/login" element={<LogIn />} />
+				<Route path="/logout" element={<LogOut />} />
 			</Routes>
 		</BrowserRouter>
 	</AuthProvider>,
