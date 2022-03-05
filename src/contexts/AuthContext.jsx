@@ -25,7 +25,7 @@ const AuthProtector = (props)=>{
 	const {user,_} = useContext(AuthContext)
 	useEffect(()=>{
 		if(!user){
-			setTimeout(()=>{navigate(redirectTo)},2000)
+			setTimeout(()=>{navigate(redirectTo)},500)
 		}
 	})
 	return (
