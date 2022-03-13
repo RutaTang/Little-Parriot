@@ -10,19 +10,22 @@ import SignUp from './pages/SignUp'
 import LogIn from './pages/LogIn'
 import LogOut from './pages/LogOut'
 import {AuthProvider,AuthProtector} from './contexts/AuthContext'
+import {StateProvider} from './contexts/StateContext'
 
 Amplify.configure(awsconfig);
 
 ReactDOM.render(
-	<AuthProvider>
-		<BrowserRouter>
-			<Routes>
-				<Route path="/" element={<AuthProtector><Home/></AuthProtector>} />
-				<Route path="/signup" element={<SignUp />} />
-				<Route path="/login" element={<LogIn />} />
-				<Route path="/logout" element={<LogOut />} />
-			</Routes>
-		</BrowserRouter>
-	</AuthProvider>,
+	<StateProvider>
+		<AuthProvider>
+			<BrowserRouter>
+				<Routes>
+					<Route path="/" element={<AuthProtector><Home/></AuthProtector>} />
+					<Route path="/signup" element={<SignUp />} />
+					<Route path="/login" element={<LogIn />} />
+					<Route path="/logout" element={<LogOut />} />
+				</Routes>
+			</BrowserRouter>
+		</AuthProvider>
+	</StateProvider>,
 	document.getElementById('root')
 )
