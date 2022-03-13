@@ -84,7 +84,7 @@ const Play = ()=>{
 				<div className='absolute bottom-5 right-5 w-[20vw] bg-white shadow shadow-gray-300 p-5 rounded-lg'>
 					<div className='flex justify-between items-center'>
 						<span className='text-bold text-gray-500 text-xl w-[60%] overflow-hidden'>
-							Three Little Pigs
+							Three Little Pigss
 						</span>
 						<AiOutlineFullscreen onClick={()=>{setPlayFullScreen(true)}} className='text-2xl text-gray-500 mr-0 ml-auto'/>
 					</div>
