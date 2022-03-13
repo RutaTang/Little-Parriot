@@ -1,0 +1,36 @@
+type User @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  UserAddVoices: [UserAddVoice] @hasMany(indexName: "byUser", fields: ["id"])
+  UserUploadVoices: [UserUploadVoice] @hasMany(indexName: "byUser", fields: ["id"])
+}
+
+type Story @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  STORY_NAME: String
+  STORY_PHOTO_PATH: AWSURL
+  STORY_INTRO_PATH: AWSURL
+  STORY_TEXT_PATH: AWSURL
+}
+
+type OnlineVoice @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  VOICE_NAME: String
+  VOICE_PHOTO_PATH: AWSURL
+  VOICE_PATH: AWSURL
+  UserAddVoices: [UserAddVoice] @hasMany(indexName: "byOnlineVoice", fields: ["id"])
+}
+
+type UserAddVoice @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  userID: ID! @index(name: "byUser")
+  onlinevoiceID: ID! @index(name: "byOnlineVoice")
+}
+
+type UserUploadVoice @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  userID: ID! @index(name: "byUser")
+  VOICE_NAME: String
+  VOICE_RELATION: String
+  VOICE_PHOTO_PATH: AWSURL
+  VOICE_PATH: AWSURL
+}

@@ -1,6 +1,6 @@
 import { Auth } from 'aws-amplify';
 import { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link} from 'react-router-dom'
 import { useEffect } from 'react';
 
 import PopUp from '../components/PopUp';
@@ -141,12 +141,16 @@ const SignUp = ()=>{
 								<input type="checkbox" />
 								<p className='ml-2'><span className='text-gray-400'>I agree with</span> TERMS&CONDITIONS</p>
 							</div>
-							<div className='mt-10'>
-							<button onClick={()=>{processSignUp()}} className='bg-orange-300 px-5 py-2 rounded-md'>Sign Up</button>
+							<div className='mt-10 flex flex-col md:flex-row gap-5 items-center'>
+							    <button onClick={()=>{processSignUp()}} className='bg-orange-300 px-5 py-2 rounded-md'>Sign Up</button>
+								<p>
+									<span className='text-gray-400'>Already have an account?</span>
+									<Link to='/login' className='text-orange-400 ml-5'>Log In</Link>
+								</p>
 							</div>
 						</div>
 						:
-<div>
+						<div>
 							<h3 className='text-3xl mb-14 text-gray-400'>COMFIRM YOUR ACCOUNT</h3>
 							<p className='mt-5'>Code:</p>
 							<input key="code" onChange={e=>{setCode(e.target.value)}} type="text" placeholder="your comfirm code is sent to your email" className='border rounded-lg outline-gray-400 px-2 py-1 w-full mt-2'/>
