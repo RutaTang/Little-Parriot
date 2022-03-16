@@ -2,6 +2,7 @@ type User @model @auth(rules: [{allow: public}]) {
   id: ID!
   UserAddVoices: [UserAddVoice] @hasMany(indexName: "byUser", fields: ["id"])
   UserUploadVoices: [UserUploadVoice] @hasMany(indexName: "byUser", fields: ["id"])
+  EMAIL: AWSEmail
 }
 
 type Story @model @auth(rules: [{allow: public}]) {
@@ -34,3 +35,4 @@ type UserUploadVoice @model @auth(rules: [{allow: public}]) {
   VOICE_PHOTO_PATH: AWSURL
   VOICE_PATH: AWSURL
 }
+ 
