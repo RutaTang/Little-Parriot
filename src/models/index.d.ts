@@ -28,6 +28,7 @@ export declare class User {
   readonly id: string;
   readonly UserAddVoices?: (UserAddVoice | null)[];
   readonly UserUploadVoices?: (UserUploadVoice | null)[];
+  readonly EMAIL?: string;
   readonly createdAt?: string;
   readonly updatedAt?: string;
   constructor(init: ModelInit<User, UserMetaData>);
