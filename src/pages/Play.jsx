@@ -33,8 +33,8 @@ const Play = () => {
     <div>
       {playFullScreen
         ? (
-          <div className="w-screen h-screen bg-black bg-opacity-50 absolute top-0 left-0">
-            <div className="w-[80vw] h-[90vh] bg-white overflow-scroll absolute top-[5vh] left-[10vw] p-10 shadow shadow-gray-300 rounded-lg">
+          <div className="w-[100vw] h-[100vh] bg-black bg-opacity-50 fixed top-0 left-0">
+            <div className="md:w-[80vw] md:h-[90vh] w-full h-full bg-white overflow-scroll absolute md:top-[5vh] md:left-[10vw] p-10 shadow shadow-gray-300 rounded-lg">
               <div className="w-full flex justify-end items-center">
                 <AiOutlineFullscreenExit
                   onClick={() => {
@@ -43,13 +43,13 @@ const Play = () => {
                   className="text-2xl text-gray-500"
                 />
               </div>
-              <div className="w-full h-[50%] flex justify-between items-center gap-x-5 mt-10">
-                <img src="/play-cover.svg" alt="" className="w-[30%] h-full" />
-                <div className="self-start h-full">
+              <div className="w-full h-[50vh] flex flex-col md:flex-row justify-between items-center gap-x-5 mt-10">
+                <img src="/play-cover.svg" alt="" className="w-1/2 md:w-[30%] h-full" />
+                <div className="self-start h-full md:mt-0 mt-5">
                   <h1 className="text-3xl font-bold text-center">
                     The Three Little Pigs
                   </h1>
-                  <div className="text-center mt-14 text-gray-500 leading-8 h-[60%] overflow-scroll">
+                  <div className="text-center md:mt-14 mt-5 text-gray-500 leading-8 h-[60%] overflow-scroll">
                     <p>and not enough food to feed them.</p>
                     <p>So when they were old enough,</p>
                     <p>
@@ -82,30 +82,30 @@ const Play = () => {
                     </p>
                   </div>
                 </div>
-                <div className="flex flex-col justify-end h-full pb-10 gap-5">
+                <div className="md:flex md:flex-col md:block hidden justify-end h-full pb-10 gap-5">
                   <FiShare2 className="text-2xl text-gray-500" />
                   <AiOutlineHeart className="text-2xl text-gray-500" />
                 </div>
               </div>
-              <Progress className="mt-10 h-16" />
+              <Progress className="mt-36 md:mt-10 h-16" />
               <div className="w-full mt-10">
                 <h3 className="text-bold text-3xl text-gray-500">Paly List</h3>
                 <div className="grid grid-cols-3 w-full mt-5 gap-x-5 gap-y-3 ">
                   <div className="flex justify-between">
                     <p>Wooden House</p>
-                    <BiPlayCircle className="text-2xl text-gray-500" />
+                    <BiPlayCircle className="md:block hidden text-2xl text-gray-500" />
                   </div>
                   <div className="flex justify-between">
                     <p>Wooden House</p>
-                    <BiPlayCircle className="text-2xl text-gray-500" />
+                    <BiPlayCircle className="md:block hidden text-2xl text-gray-500" />
                   </div>
                   <div className="flex justify-between">
                     <p>Wooden House</p>
-                    <BiPlayCircle className="text-2xl text-gray-500" />
+                    <BiPlayCircle className="md:block hidden text-2xl text-gray-500" />
                   </div>
                   <div className="flex justify-between">
                     <p>Wooden House</p>
-                    <BiPlayCircle className="text-2xl text-gray-500" />
+                    <BiPlayCircle className="md:block hidden text-2xl text-gray-500" />
                   </div>
                 </div>
               </div>
@@ -113,7 +113,7 @@ const Play = () => {
           </div>
         )
         : (
-          <div className="absolute bottom-5 right-5 w-[20vw] bg-white shadow shadow-gray-300 p-5 rounded-lg">
+          <div className="fixed bottom-5 md:right-5 md:left-auto left-[5vw] right-[5vw] w-[90vw] md:w-[20vw] bg-white shadow shadow-gray-300 p-5 rounded-lg">
             <div className="flex justify-between items-center">
               <span className="text-bold text-gray-500 text-xl w-[60%] overflow-hidden">
                 Three Little Pigss
