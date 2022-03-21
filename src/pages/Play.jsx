@@ -8,12 +8,17 @@ import { useContext, useState } from "react";
 import { StateContext } from "../contexts/StateContext";
 
 const Progress = (props) => {
+  const totalDuration = props.totalDuration || "01:00";
+	const totalDurationNumber = totalDuration.split(":").map((item) => parseInt(item)).reduce((a, b) => a * 60 + b);
+  const currentProgress = props.currentProgress || "00:50";
+	const currentProgressNumber = currentProgress.split(":").map((item) => parseInt(item)).reduce((a, b) => a * 60 + b);
+	console.log(currentProgressNumber,totalDurationNumber)
   return (
     <div className={`w-full relative ${props.className}`}>
       <div className="w-full h-[40%] bg-gray-200 rounded-xl absolute"></div>
-      <div className="w-[20%] h-[40%] bg-orange-400 rounded-xl absolute"></div>
+      <div style={{width:`${Math.round(100*currentProgressNumber/totalDurationNumber)}%`}} className='h-[40%] bg-orange-400 rounded-xl absolute'></div>
       <div className="w-full flex justify-between absolute top-[60%]">
-        <p>6:00/12:12</p>
+        <p>{currentProgress}/{totalDuration}</p>
         <div>
           <BsFillPlayFill className="text-2xl text-gray-500" />
         </div>
