@@ -33,7 +33,7 @@ const Play = () => {
     <div>
       {playFullScreen
         ? (
-          <div className="w-screen h-screen bg-black bg-opacity-50">
+          <div className="w-screen h-screen bg-black bg-opacity-50 absolute top-0 left-0">
             <div className="w-[80vw] h-[90vh] bg-white overflow-scroll absolute top-[5vh] left-[10vw] p-10 shadow shadow-gray-300 rounded-lg">
               <div className="w-full flex justify-end items-center">
                 <AiOutlineFullscreenExit
