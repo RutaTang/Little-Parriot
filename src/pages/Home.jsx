@@ -7,7 +7,7 @@ const Home = () => {
       <Nav />
       <Play />
       {/*Story*/}
-      <div className="w-[90%] mx-auto mt-20 md:mt-28">
+      <div className="w-[90%] mx-auto mt-24 md:mt-28">
         <h1 className="text-3xl font-bold w-full text-center md:text-left">Story List</h1>
         <div className="flex w-full md:flex-row flex-col">
           <div className="flex flex-col gap-y-5 md:mt-10 mt-3 md:w-1/5 w-full text-center md:text-left">
