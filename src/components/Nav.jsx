@@ -1,8 +1,12 @@
 import { GiParrotHead } from "react-icons/gi";
+import {useContext} from 'react';
+
+import {StateContext} from "../contexts/StateContext";
 
 const Nav = (props) => {
   const userName = props.userName ?? "UnName";
   const isMobile = window.innerWidth < 768;
+	const {page,setPage} = useContext(StateContext);
   return (
     <div>
       {!isMobile
@@ -12,8 +16,8 @@ const Nav = (props) => {
               <GiParrotHead className="text-5xl text-orange-500" />
             </div>
             <div className="hidden md:flex gap-x-16 items-center">
-              <p className="text-3xl text-orange-500 font-bold">Storage</p>
-              <p className="text-2xl text-gray-500">Voice</p>
+              <p onClick={()=>{setPage(0)}} className={`${page===0 ? "text-3xl text-orange-500 font-bold" : "text-2xl text-gray-500"} ` }>Storage</p>
+              <p onClick={()=>{setPage(1)}} className={`${page===1 ? "text-3xl text-orange-500 font-bold" : "text-2xl text-gray-500"} ` }>Voice</p>
               <div className="flex items-center">
                 <img className="w-8" src="/profile_tmp.png" alt="" />
                 <p className="ml-2 text-lg text-gray-400">{userName}</p>
@@ -36,13 +40,13 @@ const Nav = (props) => {
             </div>
             <div className="fixed bottom-0 w-[100vw] flex flex-row justify-between items-center px-10 py-5 bg-white">
               <div>
-                <p className="text-orange-400 text-2xl">Story</p>
+                <p onClick={()=>{setPage(0)}} className={`${ page === 0 ? "text-orange-400 text-2xl" : "text-2xl"}` }>Story</p>
               </div>
               <div className="mb-3">
                 <img className="w-10" src="/profile_tmp.png" alt="" />
               </div>
               <div>
-                <p className="text-2xl">Voice</p>
+                <p onClick={()=>{setPage(1)}} className={`${ page === 1 ? "text-orange-400 text-2xl" : "text-2xl"}` }>Voice</p>
               </div>
             </div>
           </div>

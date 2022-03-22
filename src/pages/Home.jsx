@@ -1,13 +1,18 @@
+import {useContext} from "react";
+
 import Play from "./Play";
 import Nav from "../components/Nav";
+import {StateContext} from "../contexts/StateContext";
+
 
 const Home = () => {
+	const {page,setPage} = useContext(StateContext);
   return (
     <div className="w-screen pb-40 md:pb-0">
       <Nav />
       <Play />
       {/*Story*/}
-      <div className="w-[90%] mx-auto mt-24 md:mt-28">
+      <div style={{display:`${page === 0 ? "block" : "none" }`}} className="w-[90%] mx-auto mt-24 md:mt-28">
         <h1 className="text-3xl font-bold w-full text-center md:text-left">
           Story List
         </h1>
@@ -46,7 +51,9 @@ const Home = () => {
         </div>
       </div>
       {/* Voice */}
-
+			<div style={{display:`${page === 1 ? "block" : "none"}`}}>
+				Voice{page}
+			</div>
     </div>
   );
 };
