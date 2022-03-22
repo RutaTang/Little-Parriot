@@ -43,7 +43,7 @@ const Home = () => {
 
   return (
     <div className="w-screen pb-40 md:pb-0">
-      <Nav />
+      <Nav  />
       <Play />
       {/*Story*/}
       <div
@@ -55,7 +55,7 @@ const Home = () => {
         </h1>
         <div className="flex w-full md:flex-row flex-col">
           <div className="flex flex-col gap-y-5 md:mt-10 mt-3 md:w-1/5 w-full text-center md:text-left">
-            {storyTags && storyTags.map((tag,idx) => <p onClick={()=>{setCurrentTag(idx)}} className={currentTag === idx ? `px-3 py-1 bg-orange-300 text-white rounded-lg cursor-pointer` : 'cursor-pointer' }>{tag.name}</p>)}
+            {storyTags && storyTags.map((tag,idx) => <p key={tag.name+idx} onClick={()=>{setCurrentTag(idx)}} className={currentTag === idx ? `px-3 py-1 bg-orange-300 text-white rounded-lg cursor-pointer` : 'cursor-pointer' }>{tag.name}</p>)}
           </div>
           <div className="md:w-4/5 w-full md:grid-cols-3 md:mt-0 mt-10 md:grid md:mx-5 md:gap-x-8 md:gap-y-12">
             {/* Story Card  */}
