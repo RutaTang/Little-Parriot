@@ -1,18 +1,21 @@
-import {useContext} from "react";
+import { useContext } from "react";
 
 import Play from "./Play";
 import Nav from "../components/Nav";
-import {StateContext} from "../contexts/StateContext";
-
+import { StateContext } from "../contexts/StateContext";
 
 const Home = () => {
-	const {page,setPage} = useContext(StateContext);
+  const { page, setPage } = useContext(StateContext);
+  const { playFullScreen, setPlayFullScreen } = useContext(StateContext);
   return (
     <div className="w-screen pb-40 md:pb-0">
       <Nav />
       <Play />
       {/*Story*/}
-      <div style={{display:`${page === 0 ? "block" : "none" }`}} className="w-[90%] mx-auto mt-24 md:mt-28">
+      <div
+        style={{ display: `${page === 0 ? "block" : "none"}` }}
+        className="w-[90%] mx-auto mt-24 md:mt-28"
+      >
         <h1 className="text-3xl font-bold w-full text-center md:text-left">
           Story List
         </h1>
@@ -29,7 +32,7 @@ const Home = () => {
           </div>
           <div className="md:w-4/5 w-full md:grid-cols-3 md:mt-0 mt-10 md:grid md:mx-5 md:gap-x-8 md:gap-y-12">
             {/* Story Card  */}
-            <div className="bg-white rounded-lg shadow shadow-gray-300 pb-5 w-4/5 mx-auto">
+            <div onClick={()=>{setPlayFullScreen(true)}} className="bg-white rounded-lg shadow shadow-gray-300 pb-5 w-4/5 mx-auto hover:scale-105 transition ease-in-out duration-230 cursor-pointer">
               <img
                 className="w-full md:h-[280px] h-[200px]"
                 style={{ objectFit: "fill" }}
@@ -51,9 +54,9 @@ const Home = () => {
         </div>
       </div>
       {/* Voice */}
-			<div style={{display:`${page === 1 ? "block" : "none"}`}}>
-				Voice{page}
-			</div>
+      <div style={{ display: `${page === 1 ? "block" : "none"}` }}>
+        Voice{page}
+      </div>
     </div>
   );
 };

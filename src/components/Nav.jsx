@@ -1,5 +1,6 @@
 import { GiParrotHead } from "react-icons/gi";
 import {useContext} from 'react';
+import { useNavigate } from "react-router-dom";
 
 import {StateContext} from "../contexts/StateContext";
 
@@ -7,6 +8,7 @@ const Nav = (props) => {
   const userName = props.userName ?? "UnName";
   const isMobile = window.innerWidth < 768;
 	const {page,setPage} = useContext(StateContext);
+	const navigate = useNavigate();
   return (
     <div>
       {!isMobile
@@ -18,7 +20,7 @@ const Nav = (props) => {
             <div className="hidden md:flex gap-x-16 items-center">
               <p onClick={()=>{setPage(0)}} className={`${page===0 ? "text-3xl text-orange-500 font-bold" : "text-2xl text-gray-500"} ` }>Storage</p>
               <p onClick={()=>{setPage(1)}} className={`${page===1 ? "text-3xl text-orange-500 font-bold" : "text-2xl text-gray-500"} ` }>Voice</p>
-              <div className="flex items-center">
+              <div onClick={()=>{navigate('/logout')}} className="flex items-center">
                 <img className="w-8" src="/profile_tmp.png" alt="" />
                 <p className="ml-2 text-lg text-gray-400">{userName}</p>
               </div>
@@ -42,7 +44,7 @@ const Nav = (props) => {
               <div>
                 <p onClick={()=>{setPage(0)}} className={`${ page === 0 ? "text-orange-400 text-2xl" : "text-2xl"}` }>Story</p>
               </div>
-              <div className="mb-3">
+              <div onClick={()=>{navigate('/logout')}} className="mb-3">
                 <img className="w-10" src="/profile_tmp.png" alt="" />
               </div>
               <div>
