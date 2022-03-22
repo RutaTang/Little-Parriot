@@ -18,9 +18,9 @@ const Nav = (props) => {
               <GiParrotHead className="text-5xl text-orange-500" />
             </div>
             <div className="hidden md:flex gap-x-16 items-center">
-              <p onClick={()=>{setPage(0)}} className={`${page===0 ? "text-3xl text-orange-500 font-bold" : "text-2xl text-gray-500"} ` }>Storage</p>
-              <p onClick={()=>{setPage(1)}} className={`${page===1 ? "text-3xl text-orange-500 font-bold" : "text-2xl text-gray-500"} ` }>Voice</p>
-              <div onClick={()=>{navigate('/logout')}} className="flex items-center">
+              <p onClick={()=>{setPage(0)}} className={`cursor-pointer ${page===0 ? "text-3xl text-orange-500 font-bold" : "text-2xl text-gray-500"} ` }>Storage</p>
+              <p onClick={()=>{setPage(1)}} className={`cursor-pointer ${page===1 ? "text-3xl text-orange-500 font-bold" : "text-2xl text-gray-500"} ` }>Voice</p>
+              <div onClick={()=>{navigate('/logout')}} className="flex items-center cursor-pointer">
                 <img className="w-8" src="/profile_tmp.png" alt="" />
                 <p className="ml-2 text-lg text-gray-400">{userName}</p>
               </div>

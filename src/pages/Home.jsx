@@ -1,12 +1,46 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import Play from "./Play";
 import Nav from "../components/Nav";
 import { StateContext } from "../contexts/StateContext";
 
+const FAKE_STORY_TAGS = [
+  {
+    id: 1,
+    name: "Hot",
+  },
+  {
+    id: 2,
+    name: "Recommand",
+  },
+  {
+    id: 3,
+    name: "Fair Tale",
+  },
+  {
+    id: 4,
+    name: "Cartoon",
+  },
+  {
+    id: 5,
+    name: "Bedtime Story",
+  },
+  {
+    id: 6,
+    name: "Comedy",
+  },
+];
+
 const Home = () => {
   const { page, setPage } = useContext(StateContext);
   const { playFullScreen, setPlayFullScreen } = useContext(StateContext);
+  const [storyTags, setStoryTags] = useState();
+	const [currentTag, setCurrentTag] = useState(0);
+
+  useEffect(() => {
+    setStoryTags(FAKE_STORY_TAGS);
+  }, []);
+
   return (
     <div className="w-screen pb-40 md:pb-0">
       <Nav />
@@ -21,18 +55,16 @@ const Home = () => {
         </h1>
         <div className="flex w-full md:flex-row flex-col">
           <div className="flex flex-col gap-y-5 md:mt-10 mt-3 md:w-1/5 w-full text-center md:text-left">
-            <p className="px-3 py-1 bg-orange-300 text-white rounded-lg">
-              Hot
-            </p>
-            <p>Recommand</p>
-            <p>Fair Tale</p>
-            <p>Cartoon</p>
-            <p>Bedtime Story</p>
-            <p>Comedy</p>
+            {storyTags && storyTags.map((tag,idx) => <p onClick={()=>{setCurrentTag(idx)}} className={currentTag === idx ? `px-3 py-1 bg-orange-300 text-white rounded-lg cursor-pointer` : 'cursor-pointer' }>{tag.name}</p>)}
           </div>
           <div className="md:w-4/5 w-full md:grid-cols-3 md:mt-0 mt-10 md:grid md:mx-5 md:gap-x-8 md:gap-y-12">
             {/* Story Card  */}
-            <div onClick={()=>{setPlayFullScreen(true)}} className="bg-white rounded-lg shadow shadow-gray-300 pb-5 w-4/5 mx-auto hover:scale-105 transition ease-in-out duration-230 cursor-pointer">
+            <div
+              onClick={() => {
+                setPlayFullScreen(true);
+              }}
+              className="bg-white rounded-lg shadow shadow-gray-300 pb-5 w-4/5 mx-auto hover:scale-105 transition ease-in-out duration-230 cursor-pointer"
+            >
               <img
                 className="w-full md:h-[280px] h-[200px]"
                 style={{ objectFit: "fill" }}

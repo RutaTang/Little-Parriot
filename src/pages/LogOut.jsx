@@ -11,7 +11,7 @@ const LogOut = () => {
 		setUser(null);
     setTimeout(() => {
       navigate("/login");
-    }, 1000);
+    }, 3000);
   }, []);
   return (
     <div>
