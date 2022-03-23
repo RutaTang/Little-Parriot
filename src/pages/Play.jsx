@@ -6,6 +6,7 @@ import { BiPlayCircle } from "react-icons/bi";
 import { useContext, useEffect, useMemo, useRef, useState } from "react";
 
 import { StateContext } from "../contexts/StateContext";
+import { getPublicStoryTrackLink } from "../storage/Story";
 
 const Progress = (props) => {
   const { audioRef, isPlay, audioTotalDuration, audioCurrentTime } = useContext(
@@ -77,7 +78,7 @@ const FAKE_DATA = {
     {
       id: "1",
       title: "Wooden House",
-      url: "/soft.mp3",
+      url: "Soft.mp3",
     },
   ],
 };
@@ -95,9 +96,14 @@ const Play = () => {
   }, []);
 
   useEffect(() => {
-    setAudioSrc((_) =>
-      playList.length !== 0 && playIdx >= 0 ? playList[playIdx].url : ""
-    );
+    const url = playList.length !== 0 && playIdx >= 0
+      ? playList[playIdx].url
+      : null;
+    if (url) {
+      getPublicStoryTrackLink(url).then((url) => {
+        setAudioSrc(url);
+      }).catch(console.error);
+    }
   }, [playIdx, playList]);
 
   return (

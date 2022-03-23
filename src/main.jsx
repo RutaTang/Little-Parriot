@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Amplify, { Auth } from "aws-amplify";
+import Amplify, { Auth,Storage } from "aws-amplify";
 import awsconfig from "./aws-exports";
 
 import Home from "./pages/Home";
@@ -13,6 +13,7 @@ import { AuthProtector, AuthProvider } from "./contexts/AuthContext";
 import { StateProvider } from "./contexts/StateContext";
 
 Amplify.configure(awsconfig);
+
 
 ReactDOM.render(
   <StateProvider>
