@@ -1,46 +1,105 @@
 import { AiOutlineFullscreen, AiOutlineFullscreenExit } from "react-icons/ai";
 import { FiShare2 } from "react-icons/fi";
 import { AiOutlineHeart } from "react-icons/ai";
-import { BsFillPlayFill } from "react-icons/bs";
+import { BsFillPauseFill, BsFillPlayFill } from "react-icons/bs";
 import { BiPlayCircle } from "react-icons/bi";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useMemo, useRef, useState } from "react";
 
 import { StateContext } from "../contexts/StateContext";
 
 const Progress = (props) => {
-  const totalDuration = props.totalDuration || "01:00";
-  const totalDurationNumber = totalDuration.split(":").map((item) =>
-    parseInt(item)
-  ).reduce((a, b) => a * 60 + b);
-  const currentProgress = props.currentProgress || "00:50";
-  const currentProgressNumber = currentProgress.split(":").map((item) =>
-    parseInt(item)
-  ).reduce((a, b) => a * 60 + b);
-  console.log(currentProgressNumber, totalDurationNumber);
+  const { audioRef, isPlay, audioTotalDuration, audioCurrentTime } = useContext(
+    StateContext,
+  );
+
+  const play = () => {
+    if (audioRef.current) {
+      audioRef.current.play();
+    }
+  };
+  const pause = () => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+    }
+  };
+
+  const prettyTime = (timeInSec) => {
+    timeInSec = Math.round(timeInSec);
+    const minutes = Math.floor(timeInSec / 60);
+    const seconds = timeInSec % 60;
+    return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+  };
+
   return (
     <div className={`w-full relative ${props.className}`}>
       <div className="w-full h-[40%] bg-gray-200 rounded-xl absolute"></div>
       <div
         style={{
           width: `${
-            Math.round(100 * currentProgressNumber / totalDurationNumber)
+            audioTotalDuration === 0
+              ? 0
+              : Math.round(100 * audioCurrentTime / audioTotalDuration)
           }%`,
         }}
         className="h-[40%] bg-orange-400 rounded-xl absolute"
       >
       </div>
       <div className="w-full flex justify-between absolute top-[60%]">
-        <p>{currentProgress}/{totalDuration}</p>
+        <p>{prettyTime(audioCurrentTime)}/{prettyTime(audioTotalDuration)}</p>
         <div>
-          <BsFillPlayFill className="text-2xl text-gray-500" />
+          {!isPlay
+            ? (
+              <BsFillPlayFill
+                onClick={() => {
+                  play();
+                }}
+                className="text-2xl text-gray-500"
+              />
+            )
+            : (
+              <BsFillPauseFill
+                onClick={() => {
+                  pause();
+                }}
+                className="text-2xl text-gray-500"
+              />
+            )}
         </div>
       </div>
     </div>
   );
 };
 
+const FAKE_DATA = {
+  cover: "/play-cover.svg",
+  title: "The Three Little Pigs",
+  playlist: [
+    {
+      id: "1",
+      title: "Wooden House",
+      url: "/soft.mp3",
+    },
+  ],
+};
+
 const Play = () => {
-  const { playFullScreen, setPlayFullScreen } = useContext(StateContext);
+  const { audioRef, audioSrc, setAudioSrc, playFullScreen, setPlayFullScreen } =
+    useContext(
+      StateContext,
+    );
+  const [playList, setPlayList] = useState([]);
+  const [playIdx, setPlayIdx] = useState(-1);
+
+  useEffect(() => {
+    setPlayList(FAKE_DATA.playlist);
+  }, []);
+
+  useEffect(() => {
+    setAudioSrc((_) =>
+      playList.length !== 0 && playIdx >= 0 ? playList[playIdx].url : ""
+    );
+  }, [playIdx, playList]);
+
   return (
     <div>
       {playFullScreen
@@ -103,26 +162,22 @@ const Play = () => {
                   <AiOutlineHeart className="text-2xl text-gray-500" />
                 </div>
               </div>
-              <Progress className="mt-36 md:mt-10 h-16" />
+              <Progress src={audioSrc} className="mt-36 md:mt-10 h-16" />
               <div className="w-full mt-10">
                 <h3 className="text-bold text-3xl text-gray-500">Paly List</h3>
                 <div className="grid grid-cols-3 w-full mt-5 gap-x-5 gap-y-3 ">
-                  <div className="flex justify-between">
-                    <p>Wooden House</p>
-                    <BiPlayCircle className="md:block hidden text-2xl text-gray-500" />
-                  </div>
-                  <div className="flex justify-between">
-                    <p>Wooden House</p>
-                    <BiPlayCircle className="md:block hidden text-2xl text-gray-500" />
-                  </div>
-                  <div className="flex justify-between">
-                    <p>Wooden House</p>
-                    <BiPlayCircle className="md:block hidden text-2xl text-gray-500" />
-                  </div>
-                  <div className="flex justify-between">
-                    <p>Wooden House</p>
-                    <BiPlayCircle className="md:block hidden text-2xl text-gray-500" />
-                  </div>
+                  {playList.map((item, idx) => (
+                    <div
+                      key={item.title + ""}
+                      onClick={() => {
+                        setPlayIdx(idx);
+                      }}
+                      className="flex justify-between cursor-pointer"
+                    >
+                      <p>{idx + 1}. {item.title}</p>
+                      <BiPlayCircle className="md:block hidden text-2xl text-gray-500" />
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -143,7 +198,7 @@ const Play = () => {
                   className="text-2xl text-gray-500 mr-0 ml-auto"
                 />
               </div>
-              <Progress className="mt-3 h-5" />
+              <Progress src={audioSrc} className="mt-5 h-16" />
             </div>
             {/*For mobile*/}
             <div className="md:hidden fixed bottom-24 right-5 p-3 rounded-full bg-white shadow shadow-gray-400 bg-opacity-60">
