@@ -1,15 +1,15 @@
-import {getAllStories} from '../backend/story/get-story';
-
-const jsonTest = await getAllStories();
+import { useEffect,useState } from "react";
+import { getAllStories } from "../backend/story/get-story";
 
 const TestApi = () => {
-  const json = JSON.stringify(jsonTest, null, 2);;
+  const [json, setJson] = useState();
+  useEffect(() => {
+    getAllStories().then((jsonTest) => {
+      setJson(JSON.stringify(jsonTest, null, 2));
+    });
+  }, [json]);
 
-  return (
-    <pre>
-      {json}
-    </pre>
-  )
-}
+  return <pre>{json}</pre>;
+};
 
 export default TestApi;
