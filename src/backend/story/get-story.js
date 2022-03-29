@@ -1,7 +1,10 @@
-import { API } from 'aws-amplify'
-import { listStories } from '../graphql/queries'
+import { Amplify, API, graphqlOperation } from 'aws-amplify';
+import { listStories } from '../../graphql/queries';
+import awsconfig from '../../aws-exports';
 
-export const getAllStories = function () {
-    const result = await API.graphql(listStories);
+Amplify.configure(awsconfig);
+
+export const getAllStories = async function () {
+    const result = await API.graphql(graphqlOperation(listStories));
     return result;
 };
