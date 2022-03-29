@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
 import LogIn from "./pages/LogIn";
 import LogOut from "./pages/LogOut";
+import TestApi from "./pages/TestApi";
 import { AuthProtector, AuthProvider } from "./contexts/AuthContext";
 import { StateProvider } from "./contexts/StateContext";
 
@@ -31,6 +32,7 @@ ReactDOM.render(
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<LogIn />} />
           <Route path="/logout" element={<LogOut />} />
+          <Route path="/test-api" element={<TestApi />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
