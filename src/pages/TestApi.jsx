@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { getAllStories } from "../backend/story/get-story";
+import { listAllStories, listStoryInfo } from "../backend/story/get-story";
 
 const TestApi = () => {
   const [json, setJson] = useState();
-  getAllStories().then((jsonTest) => {
+  listStoryInfo().then((jsonTest) => {
     setJson(JSON.stringify(jsonTest, null, 2));
   });
-  return <pre>{json}</pre>;
+  return <div><pre>{json}</pre></div>;
 };
 
 export default TestApi;
