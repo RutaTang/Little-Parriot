@@ -8,16 +8,16 @@ type User @model @auth(rules: [{allow: public}]) {
 type Story @model @auth(rules: [{allow: public}]) {
   id: ID!
   STORY_NAME: String
-  STORY_PHOTO_PATH: AWSURL
-  STORY_INTRO_PATH: AWSURL
-  STORY_TEXT_PATH: AWSURL
+  STORY_PHOTO_PATH: String
+  STORY_INTRO_PATH: String
+  STORY_TEXT_PATH: String
 }
 
 type OnlineVoice @model @auth(rules: [{allow: public}]) {
   id: ID!
   VOICE_NAME: String
-  VOICE_PHOTO_PATH: AWSURL
-  VOICE_PATH: AWSURL
+  VOICE_PHOTO_PATH: String
+  VOICE_PATH: String
   UserAddVoices: [UserAddVoice] @hasMany(indexName: "byOnlineVoice", fields: ["id"])
 }
 
@@ -32,7 +32,7 @@ type UserUploadVoice @model @auth(rules: [{allow: public}]) {
   userID: ID! @index(name: "byUser")
   VOICE_NAME: String
   VOICE_RELATION: String
-  VOICE_PHOTO_PATH: AWSURL
-  VOICE_PATH: AWSURL
+  VOICE_PHOTO_PATH: String
+  VOICE_PATH: String
 }
  

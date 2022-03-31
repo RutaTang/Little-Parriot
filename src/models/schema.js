@@ -205,14 +205,14 @@ export const schema = {
                 "VOICE_PHOTO_PATH": {
                     "name": "VOICE_PHOTO_PATH",
                     "isArray": false,
-                    "type": "AWSURL",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
                 "VOICE_PATH": {
                     "name": "VOICE_PATH",
                     "isArray": false,
-                    "type": "AWSURL",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -287,21 +287,21 @@ export const schema = {
                 "STORY_PHOTO_PATH": {
                     "name": "STORY_PHOTO_PATH",
                     "isArray": false,
-                    "type": "AWSURL",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
                 "STORY_INTRO_PATH": {
                     "name": "STORY_INTRO_PATH",
                     "isArray": false,
-                    "type": "AWSURL",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
                 "STORY_TEXT_PATH": {
                     "name": "STORY_TEXT_PATH",
                     "isArray": false,
-                    "type": "AWSURL",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -367,14 +367,14 @@ export const schema = {
                 "VOICE_PHOTO_PATH": {
                     "name": "VOICE_PHOTO_PATH",
                     "isArray": false,
-                    "type": "AWSURL",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
                 "VOICE_PATH": {
                     "name": "VOICE_PATH",
                     "isArray": false,
-                    "type": "AWSURL",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -437,5 +437,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "f9004288cb178b47d09c21d208a0546d"
+    "version": "f8beee3830d097209387ea9f7fc951c5"
 };
