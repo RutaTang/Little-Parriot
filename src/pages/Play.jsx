@@ -6,7 +6,7 @@ import { BiPlayCircle } from "react-icons/bi";
 import { useContext, useEffect, useMemo, useRef, useState } from "react";
 
 import { StateContext } from "../contexts/StateContext";
-import { getPublicStoryTrackLink } from "../storage/Story";
+import { getPublicUrl } from "../storage/index";
 
 const Progress = (props) => {
   const { audioRef, isPlay, audioTotalDuration, audioCurrentTime } = useContext(
@@ -100,7 +100,7 @@ const Play = () => {
       ? playList[playIdx].url
       : null;
     if (url) {
-      getPublicStoryTrackLink(url).then((url) => {
+      getPublicUrl(url).then((url) => {
         setAudioSrc(url);
       }).catch(console.error);
     }

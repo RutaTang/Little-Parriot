@@ -1,8 +1,11 @@
 import { useContext, useEffect, useState } from "react";
+import _ from "lodash";
 
 import Play from "./Play";
 import Nav from "../components/Nav";
 import { StateContext } from "../contexts/StateContext";
+import { getPublicUrl } from "../storage/index";
+import { listAllStories } from "../backend/story/get-story";
 
 const FAKE_STORY_TAGS = [
   {
@@ -52,11 +55,25 @@ const Home = () => {
   const { page, setPage } = useContext(StateContext);
   const { playFullScreen, setPlayFullScreen } = useContext(StateContext);
   const [storyTags, setStoryTags] = useState();
+  const [storyItems, setStoryItems] = useState([]);
   const [currentTag, setCurrentTag] = useState(0);
   const [currentVoiceId, setCurrentVoiceId] = useState(0);
 
   useEffect(() => {
     setStoryTags(FAKE_STORY_TAGS);
+  }, []);
+
+  useEffect(() => {
+    let isLoaded = false;
+    listAllStories().then((res) => {
+      if (!isLoaded) {
+        const stories = _.get(res, "data.listStories.items", []);
+        setStoryItems(stories);
+      }
+    }, []);
+    return () => {
+      isLoaded = true;
+    };
   }, []);
 
   return (
@@ -92,29 +109,30 @@ const Home = () => {
           </div>
           <div className="md:w-4/5 w-full md:grid-cols-3 md:mt-0 mt-10 md:grid md:mx-5 md:gap-x-8 md:gap-y-12">
             {/* Story Card  */}
-            <div
-              onClick={() => {
-                setPlayFullScreen(true);
-              }}
-              className="bg-white rounded-lg shadow shadow-gray-300 pb-5 w-4/5 mx-auto hover:scale-105 transition ease-in-out duration-230 cursor-pointer"
-            >
-              <img
-                className="w-full md:h-[280px] h-[200px]"
-                style={{ objectFit: "fill" }}
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEAxCdKO0OVKfw6ZW4nd3UFov_67vUuUx3AA&usqp=CAU"
-                alt=""
-              />
-              <div className="px-3 space-y-2">
-                <h1 className="text-xl font-bold mt-2">Three Pigs</h1>
-                <p className="text-gray-500">
-                  Adventure and play with friends.
-                </p>
-                <div className="text-gray-500 flex flex-row justify-between">
-                  <p>Stories: 10</p>
-                  <p>Total Time: 100min</p>
+            {storyItems.map((story, id) => (
+              <div
+                onClick={() => {
+                  setPlayFullScreen(true);
+                }}
+                className="bg-white rounded-lg shadow shadow-gray-300 pb-5 w-4/5 mx-auto hover:scale-105 transition ease-in-out duration-230 cursor-pointer"
+								key={story.id}
+              >
+                <img
+                  className="w-full md:h-[280px] h-[200px]"
+                  style={{ objectFit: "fill" }}
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEAxCdKO0OVKfw6ZW4nd3UFov_67vUuUx3AA&usqp=CAU"
+                  alt=""
+                />
+                <div className="px-3 space-y-2">
+                  <h1 className="text-xl font-bold mt-2">{story.STORY_NAME}</h1>
+                  <p className="text-gray-500 h-32 overflow-auto">{story.STORY_INTRO}</p>
+                  <div className="text-gray-500 flex flex-row justify-between">
+                    <p>Stories: 10</p>
+                    <p>Total Time: {Math.round(story.TOTAL_TIME_SEC / 60)}min</p>
+                  </div>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
@@ -129,8 +147,10 @@ const Home = () => {
               className={`w-[300px] shadow shadow-gray-200 p-5 rounded-lg transition hover:scale-105 cursor-pointer ${
                 currentVoiceId === id ? "border-red-400 border-4" : ""
               }`}
-							onClick={() => {setCurrentVoiceId(id)}}
-							key={item.name + id}
+              onClick={() => {
+                setCurrentVoiceId(id);
+              }}
+              key={item.name + id}
             >
               <img className="w-[160px] mx-auto" src={item.url} alt="" />
               <h3 className="text-2xl text-black mt-2">{item.name}</h3>
