@@ -1,6 +1,153 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const onCreateChapter = /* GraphQL */ `
+  subscription OnCreateChapter {
+    onCreateChapter {
+      id
+      storyID
+      CHAPTER_INDEX
+      CHAPTER_NAME
+      CONTENT
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onUpdateChapter = /* GraphQL */ `
+  subscription OnUpdateChapter {
+    onUpdateChapter {
+      id
+      storyID
+      CHAPTER_INDEX
+      CHAPTER_NAME
+      CONTENT
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onDeleteChapter = /* GraphQL */ `
+  subscription OnDeleteChapter {
+    onDeleteChapter {
+      id
+      storyID
+      CHAPTER_INDEX
+      CHAPTER_NAME
+      CONTENT
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onCreateStory = /* GraphQL */ `
+  subscription OnCreateStory {
+    onCreateStory {
+      id
+      STORY_NAME
+      STORY_CATEGORY
+      STORY_PHOTO_PATH
+      STORY_INTRO
+      Chapters {
+        items {
+          id
+          storyID
+          CHAPTER_INDEX
+          CHAPTER_NAME
+          CONTENT
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
+      TOTAL_TIME_SEC
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onUpdateStory = /* GraphQL */ `
+  subscription OnUpdateStory {
+    onUpdateStory {
+      id
+      STORY_NAME
+      STORY_CATEGORY
+      STORY_PHOTO_PATH
+      STORY_INTRO
+      Chapters {
+        items {
+          id
+          storyID
+          CHAPTER_INDEX
+          CHAPTER_NAME
+          CONTENT
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
+      TOTAL_TIME_SEC
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onDeleteStory = /* GraphQL */ `
+  subscription OnDeleteStory {
+    onDeleteStory {
+      id
+      STORY_NAME
+      STORY_CATEGORY
+      STORY_PHOTO_PATH
+      STORY_INTRO
+      Chapters {
+        items {
+          id
+          storyID
+          CHAPTER_INDEX
+          CHAPTER_NAME
+          CONTENT
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
+      TOTAL_TIME_SEC
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
 export const onCreateUser = /* GraphQL */ `
   subscription OnCreateUser {
     onCreateUser {
@@ -125,54 +272,6 @@ export const onDeleteUser = /* GraphQL */ `
         startedAt
       }
       EMAIL
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const onCreateStory = /* GraphQL */ `
-  subscription OnCreateStory {
-    onCreateStory {
-      id
-      STORY_NAME
-      STORY_PHOTO_PATH
-      STORY_INTRO_PATH
-      STORY_TEXT_PATH
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const onUpdateStory = /* GraphQL */ `
-  subscription OnUpdateStory {
-    onUpdateStory {
-      id
-      STORY_NAME
-      STORY_PHOTO_PATH
-      STORY_INTRO_PATH
-      STORY_TEXT_PATH
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const onDeleteStory = /* GraphQL */ `
-  subscription OnDeleteStory {
-    onDeleteStory {
-      id
-      STORY_NAME
-      STORY_PHOTO_PATH
-      STORY_INTRO_PATH
-      STORY_TEXT_PATH
       createdAt
       updatedAt
       _version

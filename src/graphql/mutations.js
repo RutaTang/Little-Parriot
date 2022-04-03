@@ -1,6 +1,171 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const createChapter = /* GraphQL */ `
+  mutation CreateChapter(
+    $input: CreateChapterInput!
+    $condition: ModelChapterConditionInput
+  ) {
+    createChapter(input: $input, condition: $condition) {
+      id
+      storyID
+      CHAPTER_INDEX
+      CHAPTER_NAME
+      CONTENT
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const updateChapter = /* GraphQL */ `
+  mutation UpdateChapter(
+    $input: UpdateChapterInput!
+    $condition: ModelChapterConditionInput
+  ) {
+    updateChapter(input: $input, condition: $condition) {
+      id
+      storyID
+      CHAPTER_INDEX
+      CHAPTER_NAME
+      CONTENT
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const deleteChapter = /* GraphQL */ `
+  mutation DeleteChapter(
+    $input: DeleteChapterInput!
+    $condition: ModelChapterConditionInput
+  ) {
+    deleteChapter(input: $input, condition: $condition) {
+      id
+      storyID
+      CHAPTER_INDEX
+      CHAPTER_NAME
+      CONTENT
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const createStory = /* GraphQL */ `
+  mutation CreateStory(
+    $input: CreateStoryInput!
+    $condition: ModelStoryConditionInput
+  ) {
+    createStory(input: $input, condition: $condition) {
+      id
+      STORY_NAME
+      STORY_CATEGORY
+      STORY_PHOTO_PATH
+      STORY_INTRO
+      Chapters {
+        items {
+          id
+          storyID
+          CHAPTER_INDEX
+          CHAPTER_NAME
+          CONTENT
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
+      TOTAL_TIME_SEC
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const updateStory = /* GraphQL */ `
+  mutation UpdateStory(
+    $input: UpdateStoryInput!
+    $condition: ModelStoryConditionInput
+  ) {
+    updateStory(input: $input, condition: $condition) {
+      id
+      STORY_NAME
+      STORY_CATEGORY
+      STORY_PHOTO_PATH
+      STORY_INTRO
+      Chapters {
+        items {
+          id
+          storyID
+          CHAPTER_INDEX
+          CHAPTER_NAME
+          CONTENT
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
+      TOTAL_TIME_SEC
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const deleteStory = /* GraphQL */ `
+  mutation DeleteStory(
+    $input: DeleteStoryInput!
+    $condition: ModelStoryConditionInput
+  ) {
+    deleteStory(input: $input, condition: $condition) {
+      id
+      STORY_NAME
+      STORY_CATEGORY
+      STORY_PHOTO_PATH
+      STORY_INTRO
+      Chapters {
+        items {
+          id
+          storyID
+          CHAPTER_INDEX
+          CHAPTER_NAME
+          CONTENT
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
+      TOTAL_TIME_SEC
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
 export const createUser = /* GraphQL */ `
   mutation CreateUser(
     $input: CreateUserInput!
@@ -134,63 +299,6 @@ export const deleteUser = /* GraphQL */ `
         startedAt
       }
       EMAIL
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const createStory = /* GraphQL */ `
-  mutation CreateStory(
-    $input: CreateStoryInput!
-    $condition: ModelStoryConditionInput
-  ) {
-    createStory(input: $input, condition: $condition) {
-      id
-      STORY_NAME
-      STORY_PHOTO_PATH
-      STORY_INTRO_PATH
-      STORY_TEXT_PATH
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const updateStory = /* GraphQL */ `
-  mutation UpdateStory(
-    $input: UpdateStoryInput!
-    $condition: ModelStoryConditionInput
-  ) {
-    updateStory(input: $input, condition: $condition) {
-      id
-      STORY_NAME
-      STORY_PHOTO_PATH
-      STORY_INTRO_PATH
-      STORY_TEXT_PATH
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const deleteStory = /* GraphQL */ `
-  mutation DeleteStory(
-    $input: DeleteStoryInput!
-    $condition: ModelStoryConditionInput
-  ) {
-    deleteStory(input: $input, condition: $condition) {
-      id
-      STORY_NAME
-      STORY_PHOTO_PATH
-      STORY_INTRO_PATH
-      STORY_TEXT_PATH
       createdAt
       updatedAt
       _version

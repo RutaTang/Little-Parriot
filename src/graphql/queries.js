@@ -1,6 +1,173 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const getChapter = /* GraphQL */ `
+  query GetChapter($id: ID!) {
+    getChapter(id: $id) {
+      id
+      storyID
+      CHAPTER_INDEX
+      CHAPTER_NAME
+      CONTENT
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const listChapters = /* GraphQL */ `
+  query ListChapters(
+    $filter: ModelChapterFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listChapters(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        storyID
+        CHAPTER_INDEX
+        CHAPTER_NAME
+        CONTENT
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncChapters = /* GraphQL */ `
+  query SyncChapters(
+    $filter: ModelChapterFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncChapters(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        storyID
+        CHAPTER_INDEX
+        CHAPTER_NAME
+        CONTENT
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const getStory = /* GraphQL */ `
+  query GetStory($id: ID!) {
+    getStory(id: $id) {
+      id
+      STORY_NAME
+      STORY_CATEGORY
+      STORY_PHOTO_PATH
+      STORY_INTRO
+      Chapters {
+        items {
+          id
+          storyID
+          CHAPTER_INDEX
+          CHAPTER_NAME
+          CONTENT
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        nextToken
+        startedAt
+      }
+      TOTAL_TIME_SEC
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const listStories = /* GraphQL */ `
+  query ListStories(
+    $filter: ModelStoryFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listStories(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        STORY_NAME
+        STORY_CATEGORY
+        STORY_PHOTO_PATH
+        STORY_INTRO
+        Chapters {
+          nextToken
+          startedAt
+        }
+        TOTAL_TIME_SEC
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncStories = /* GraphQL */ `
+  query SyncStories(
+    $filter: ModelStoryFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncStories(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        STORY_NAME
+        STORY_CATEGORY
+        STORY_PHOTO_PATH
+        STORY_INTRO
+        Chapters {
+          nextToken
+          startedAt
+        }
+        TOTAL_TIME_SEC
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
 export const getUser = /* GraphQL */ `
   query GetUser($id: ID!) {
     getUser(id: $id) {
@@ -98,76 +265,6 @@ export const syncUsers = /* GraphQL */ `
           startedAt
         }
         EMAIL
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const getStory = /* GraphQL */ `
-  query GetStory($id: ID!) {
-    getStory(id: $id) {
-      id
-      STORY_NAME
-      STORY_PHOTO_PATH
-      STORY_INTRO_PATH
-      STORY_TEXT_PATH
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const listStories = /* GraphQL */ `
-  query ListStories(
-    $filter: ModelStoryFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listStories(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        STORY_NAME
-        STORY_PHOTO_PATH
-        STORY_INTRO_PATH
-        STORY_TEXT_PATH
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const syncStories = /* GraphQL */ `
-  query SyncStories(
-    $filter: ModelStoryFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncStories(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        STORY_NAME
-        STORY_PHOTO_PATH
-        STORY_INTRO_PATH
-        STORY_TEXT_PATH
         createdAt
         updatedAt
         _version
