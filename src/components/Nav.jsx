@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import {StateContext} from "../contexts/StateContext";
 
 const Nav = (props) => {
-  const userName = props.userName ?? "UnName";
+  const userName = props.userName ?? "Proba Beh";
   const isMobile = window.innerWidth < 768;
 	const {page,setPage} = useContext(StateContext);
 	const navigate = useNavigate();
