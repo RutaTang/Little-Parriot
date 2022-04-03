@@ -67,11 +67,11 @@ export const listChaptersByID = async function (storyID) {
 
   const graphqlQuery = `
     query ListChaptersByID(
-      $filter: ModelStoryFilterInput
+      $filter: ModelChapterFilterInput
       $limit: Int
       $nextToken: String
     ) {
-      listStories(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      listChapters(filter: $filter, limit: $limit, nextToken: $nextToken) {
         items {
           id
           CHAPTER_INDEX
