@@ -116,9 +116,9 @@ const Play = (props) => {
         playList.length !== 0 && playIdx !== -1
           ? playList[playIdx].CONTENT
           : "";
-      generateTextToSpeech(content.substring(0,1000), "Amy").then((res) => {
-				const url = res.speech.url
-				setAudioSrc(url);
+      generateTextToSpeech(content.substring(0, 1000), "Amy").then((res) => {
+        const url = res.speech.url;
+        setAudioSrc(url);
       });
     }
     // if (url) {
@@ -194,7 +194,7 @@ const Play = (props) => {
           <div className="hidden md:block fixed bottom-20 md:right-5 md:left-auto left-[5vw] right-[5vw] w-[90vw] md:w-[20vw] bg-white shadow shadow-gray-300 p-5 rounded-lg">
             <div className="flex justify-between items-center">
               <span className="text-bold text-gray-500 text-lg w-[60%] overflow-hidden">
-                Three Little Pigss
+                {story.STORY_NAME}
               </span>
               <AiOutlineFullscreen
                 onClick={() => {
