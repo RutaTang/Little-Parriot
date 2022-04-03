@@ -1,16 +1,26 @@
-type User @model @auth(rules: [{allow: public}]) {
+type Chapter @model @auth(rules: [{allow: public}]) {
   id: ID!
-  UserAddVoices: [UserAddVoice] @hasMany(indexName: "byUser", fields: ["id"])
-  UserUploadVoices: [UserUploadVoice] @hasMany(indexName: "byUser", fields: ["id"])
-  EMAIL: AWSEmail
+  storyID: ID! @index(name: "byStory")
+  CHAPTER_INDEX: Int
+  CHAPTER_NAME: String
+  CONTENT: String
 }
 
 type Story @model @auth(rules: [{allow: public}]) {
   id: ID!
   STORY_NAME: String
+  STORY_CATEGORY: String
   STORY_PHOTO_PATH: String
-  STORY_INTRO_PATH: String
-  STORY_TEXT_PATH: String
+  STORY_INTRO: String
+  Chapters: [Chapter] @hasMany(indexName: "byStory", fields: ["id"])
+  TOTAL_TIME_SEC: Int
+}
+
+type User @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  UserAddVoices: [UserAddVoice] @hasMany(indexName: "byUser", fields: ["id"])
+  UserUploadVoices: [UserUploadVoice] @hasMany(indexName: "byUser", fields: ["id"])
+  EMAIL: AWSEmail
 }
 
 type OnlineVoice @model @auth(rules: [{allow: public}]) {

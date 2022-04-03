@@ -4,6 +4,14 @@ import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplif
 
 
 
+type ChapterMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
+type StoryMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
 type UserMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
@@ -16,12 +24,34 @@ type UserUploadVoiceMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
-type StoryMetaData = {
+type OnlineVoiceMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
-type OnlineVoiceMetaData = {
-  readOnlyFields: 'createdAt' | 'updatedAt';
+export declare class Chapter {
+  readonly id: string;
+  readonly storyID: string;
+  readonly CHAPTER_INDEX?: number | null;
+  readonly CHAPTER_NAME?: string | null;
+  readonly CONTENT?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  constructor(init: ModelInit<Chapter, ChapterMetaData>);
+  static copyOf(source: Chapter, mutator: (draft: MutableModel<Chapter, ChapterMetaData>) => MutableModel<Chapter, ChapterMetaData> | void): Chapter;
+}
+
+export declare class Story {
+  readonly id: string;
+  readonly STORY_NAME?: string | null;
+  readonly STORY_CATEGORY?: string | null;
+  readonly STORY_PHOTO_PATH?: string | null;
+  readonly STORY_INTRO?: string | null;
+  readonly Chapters?: (Chapter | null)[] | null;
+  readonly TOTAL_TIME_SEC?: number | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  constructor(init: ModelInit<Story, StoryMetaData>);
+  static copyOf(source: Story, mutator: (draft: MutableModel<Story, StoryMetaData>) => MutableModel<Story, StoryMetaData> | void): Story;
 }
 
 export declare class User {
@@ -56,18 +86,6 @@ export declare class UserUploadVoice {
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<UserUploadVoice, UserUploadVoiceMetaData>);
   static copyOf(source: UserUploadVoice, mutator: (draft: MutableModel<UserUploadVoice, UserUploadVoiceMetaData>) => MutableModel<UserUploadVoice, UserUploadVoiceMetaData> | void): UserUploadVoice;
-}
-
-export declare class Story {
-  readonly id: string;
-  readonly STORY_NAME?: string | null;
-  readonly STORY_PHOTO_PATH?: string | null;
-  readonly STORY_INTRO_PATH?: string | null;
-  readonly STORY_TEXT_PATH?: string | null;
-  readonly createdAt?: string | null;
-  readonly updatedAt?: string | null;
-  constructor(init: ModelInit<Story, StoryMetaData>);
-  static copyOf(source: Story, mutator: (draft: MutableModel<Story, StoryMetaData>) => MutableModel<Story, StoryMetaData> | void): Story;
 }
 
 export declare class OnlineVoice {
