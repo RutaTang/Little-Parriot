@@ -31,6 +31,24 @@ export const listStoryInfo = async function () {
   return result;
 };
 
+// Get story by its ID
+export const getStoryByID = async function (storyID) {
+  const graphqlQuery = `
+    query GetStory($id: ID!) {
+      getStory(id: $id) {
+        id
+        STORY_NAME
+        STORY_CATEGORY
+        STORY_PHOTO_PATH
+        STORY_INTRO
+        TOTAL_TIME_SEC
+      }
+    }
+  `;
+  const result = await API.graphql(graphqlOperation(graphqlQuery, {id: storyID}));
+  return result;
+};
+
 // Get the stories that belongs to specified category
 export const listStoriesByCategory = async function (category) {
   const tempFilter = {
