@@ -62,7 +62,7 @@ export const listStoriesByCategory = async function (category) {
 // Get chapters of specified story by story ID
 export const listChaptersByID = async function (storyID) {
   const tempFilter = {
-    storyID: storyID
+    storyID: {eq: storyID}
   };
 
   const graphqlQuery = `
