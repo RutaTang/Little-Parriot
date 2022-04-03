@@ -57,6 +57,7 @@ export const onCreateStory = /* GraphQL */ `
       STORY_CATEGORY
       STORY_PHOTO_PATH
       STORY_INTRO
+      TOTAL_TIME_SEC
       Chapters {
         items {
           id
@@ -73,7 +74,6 @@ export const onCreateStory = /* GraphQL */ `
         nextToken
         startedAt
       }
-      TOTAL_TIME_SEC
       createdAt
       updatedAt
       _version
@@ -90,6 +90,7 @@ export const onUpdateStory = /* GraphQL */ `
       STORY_CATEGORY
       STORY_PHOTO_PATH
       STORY_INTRO
+      TOTAL_TIME_SEC
       Chapters {
         items {
           id
@@ -106,7 +107,6 @@ export const onUpdateStory = /* GraphQL */ `
         nextToken
         startedAt
       }
-      TOTAL_TIME_SEC
       createdAt
       updatedAt
       _version
@@ -123,6 +123,7 @@ export const onDeleteStory = /* GraphQL */ `
       STORY_CATEGORY
       STORY_PHOTO_PATH
       STORY_INTRO
+      TOTAL_TIME_SEC
       Chapters {
         items {
           id
@@ -139,7 +140,6 @@ export const onDeleteStory = /* GraphQL */ `
         nextToken
         startedAt
       }
-      TOTAL_TIME_SEC
       createdAt
       updatedAt
       _version

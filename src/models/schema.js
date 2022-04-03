@@ -127,6 +127,13 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "TOTAL_TIME_SEC": {
+                    "name": "TOTAL_TIME_SEC",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "Chapters": {
                     "name": "Chapters",
                     "isArray": true,
@@ -140,13 +147,6 @@ export const schema = {
                         "connectionType": "HAS_MANY",
                         "associatedWith": "storyID"
                     }
-                },
-                "TOTAL_TIME_SEC": {
-                    "name": "TOTAL_TIME_SEC",
-                    "isArray": false,
-                    "type": "Int",
-                    "isRequired": false,
-                    "attributes": []
                 },
                 "createdAt": {
                     "name": "createdAt",

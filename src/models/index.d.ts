@@ -46,8 +46,8 @@ export declare class Story {
   readonly STORY_CATEGORY?: string | null;
   readonly STORY_PHOTO_PATH?: string | null;
   readonly STORY_INTRO?: string | null;
-  readonly Chapters?: (Chapter | null)[] | null;
   readonly TOTAL_TIME_SEC?: number | null;
+  readonly Chapters?: (Chapter | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<Story, StoryMetaData>);

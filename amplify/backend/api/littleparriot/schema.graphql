@@ -12,8 +12,8 @@ type Story @model @auth(rules: [{allow: public}]) {
   STORY_CATEGORY: String
   STORY_PHOTO_PATH: String
   STORY_INTRO: String
-  Chapters: [Chapter] @hasMany(indexName: "byStory", fields: ["id"])
   TOTAL_TIME_SEC: Int
+  Chapters: [Chapter] @hasMany(indexName: "byStory", fields: ["id"])
 }
 
 type User @model @auth(rules: [{allow: public}]) {

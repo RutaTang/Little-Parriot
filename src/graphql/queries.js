@@ -79,6 +79,7 @@ export const getStory = /* GraphQL */ `
       STORY_CATEGORY
       STORY_PHOTO_PATH
       STORY_INTRO
+      TOTAL_TIME_SEC
       Chapters {
         items {
           id
@@ -95,7 +96,6 @@ export const getStory = /* GraphQL */ `
         nextToken
         startedAt
       }
-      TOTAL_TIME_SEC
       createdAt
       updatedAt
       _version
@@ -117,11 +117,11 @@ export const listStories = /* GraphQL */ `
         STORY_CATEGORY
         STORY_PHOTO_PATH
         STORY_INTRO
+        TOTAL_TIME_SEC
         Chapters {
           nextToken
           startedAt
         }
-        TOTAL_TIME_SEC
         createdAt
         updatedAt
         _version
@@ -152,11 +152,11 @@ export const syncStories = /* GraphQL */ `
         STORY_CATEGORY
         STORY_PHOTO_PATH
         STORY_INTRO
+        TOTAL_TIME_SEC
         Chapters {
           nextToken
           startedAt
         }
-        TOTAL_TIME_SEC
         createdAt
         updatedAt
         _version
