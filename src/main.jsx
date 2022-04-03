@@ -4,6 +4,7 @@ import "./index.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Amplify, { Auth,Storage } from "aws-amplify";
 import awsconfig from "./aws-exports";
+import { AmazonAIPredictionsProvider } from '@aws-amplify/predictions';
 
 import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
@@ -14,6 +15,7 @@ import { AuthProtector, AuthProvider } from "./contexts/AuthContext";
 import { StateProvider } from "./contexts/StateContext";
 
 Amplify.configure(awsconfig);
+Amplify.addPluggable(new AmazonAIPredictionsProvider());
 
 
 ReactDOM.render(

@@ -5,7 +5,7 @@ import Play from "./Play";
 import Nav from "../components/Nav";
 import { StateContext } from "../contexts/StateContext";
 import { getPublicUrl } from "../storage/index";
-import { listAllStories } from "../backend/story/get-story";
+import { listAllStories, listChaptersByID } from "../backend/story/get-story";
 
 const FAKE_STORY_TAGS = [
   {
@@ -58,6 +58,7 @@ const Home = () => {
   const [storyItems, setStoryItems] = useState([]);
   const [currentTag, setCurrentTag] = useState(0);
   const [currentVoiceId, setCurrentVoiceId] = useState(0);
+	const [currentStoryId, setCurrentStoryId] = useState();
 
   useEffect(() => {
     setStoryTags(FAKE_STORY_TAGS);
@@ -68,7 +69,12 @@ const Home = () => {
     listAllStories().then((res) => {
       if (!isLoaded) {
         const stories = _.get(res, "data.listStories.items", []);
-        setStoryItems(stories);
+        stories.forEach((story) => {
+          getPublicUrl(story.STORY_PHOTO_PATH).then((res) => {
+						story.STORY_PHOTO_PATH = res;
+						setStoryItems((prev) => [...prev, story]);
+          });
+        });
       }
     }, []);
     return () => {
@@ -79,7 +85,7 @@ const Home = () => {
   return (
     <div className="w-screen pb-40 md:pb-0">
       <Nav />
-      <Play />
+      <Play storyId = {currentStoryId}/>
       {/*Story*/}
       <div
         style={{ display: `${page === 0 ? "block" : "none"}` }}
@@ -113,22 +119,27 @@ const Home = () => {
               <div
                 onClick={() => {
                   setPlayFullScreen(true);
+									setCurrentStoryId(story.id);
                 }}
                 className="bg-white rounded-lg shadow shadow-gray-300 pb-5 w-4/5 mx-auto hover:scale-105 transition ease-in-out duration-230 cursor-pointer"
-								key={story.id}
+                key={story.id}
               >
                 <img
                   className="w-full md:h-[280px] h-[200px]"
                   style={{ objectFit: "fill" }}
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEAxCdKO0OVKfw6ZW4nd3UFov_67vUuUx3AA&usqp=CAU"
+                  src= {story.STORY_PHOTO_PATH}
                   alt=""
                 />
                 <div className="px-3 space-y-2">
                   <h1 className="text-xl font-bold mt-2">{story.STORY_NAME}</h1>
-                  <p className="text-gray-500 h-32 overflow-auto">{story.STORY_INTRO}</p>
+                  <p className="text-gray-500 h-32 overflow-auto">
+                    {story.STORY_INTRO}
+                  </p>
                   <div className="text-gray-500 flex flex-row justify-between">
                     <p>Stories: 10</p>
-                    <p>Total Time: {Math.round(story.TOTAL_TIME_SEC / 60)}min</p>
+                    <p>
+                      Total Time: {Math.round(story.TOTAL_TIME_SEC / 60)}min
+                    </p>
                   </div>
                 </div>
               </div>
